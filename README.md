@@ -23,7 +23,7 @@ Before using this browser extension, you will need to set up the back-end. You c
 
 ```sh
 docker pull vcerovic/notes-app
-docker run -e JWT_SECRET_KEY=your256bitskey -e JWT_EXPIRATION=86400000 -p 8081:8081 -d vcerovic/notes-app
+docker run -e JWT_SECRET_KEY=yourkey -e JWT_EXPIRATION=86400000 -p 8081:8081 -d vcerovic/notes-app
 ```
 
 ### Browser extension setup
