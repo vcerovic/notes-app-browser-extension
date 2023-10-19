@@ -1,33 +1,43 @@
-This is a [Plasmo extension](https://docs.plasmo.com/) project bootstrapped with [`plasmo init`](https://www.npmjs.com/package/plasmo).
+# Notes App Browser Extension
+![Notes App Thumbnail](https://i.imgur.com/mpMy6XS.png)
+
+## About
+
+This is a code repository built for article ["Build a Cross-Browser Extension with Plasmo Framework"](https://veljkocerovic.com/blog/build-a-cross-browser-extension-with-plasmo-framework). 
+
+I used [Plasmo Framework](https://github.com/PlasmoHQ/plasmo) to craft a cross-browser extension enabling users to save notes from any website.
+
+### Features
+-   Registration and login. 🔓
+-   Read and delete notes. 📖
+-   Save notes on any website. 💾
+-   Access saved notes on visited websites. 📒
+
+### Demo
+![Notes App Demo Video](https://i.imgur.com/R10KqIF.gif)
 
 ## Getting Started
 
-First, run the development server:
+### Back-end setup
+Before using this browser extension, you will need to set up the back-end. You can do this using Docker with the following commands:
 
-```bash
-pnpm dev
-# or
-npm run dev
+```sh
+docker pull vcerovic/notes-app
+docker run -e JWT_SECRET_KEY=yoursecret -e JWT_EXPIRATION=86400000 -p 8081:8081 -d vcerovic/notes-app
 ```
 
-Open your browser and load the appropriate development build. For example, if you are developing for the chrome browser, using manifest v3, use: `build/chrome-mv3-dev`.
+### Browser extension setup
 
-You can start editing the popup by modifying `popup.tsx`. It should auto-update as you make changes. To add an options page, simply add a `options.tsx` file to the root of the project, with a react component default exported. Likewise to add a content page, add a `content.ts` file to the root of the project, importing some module and do some logic, then reload the extension on your browser.
+To set up the browser extension to the following:
 
-For further guidance, [visit our Documentation](https://docs.plasmo.com/)
+1. Clone the repository
+2. Install all dependencies with `npm install`
+3. Create `.env` file, and add `PLASMO_PUBLIC_API_URL=http://localhost:8081/api/v1`
+4. Then build the app with `npm run dev`
+5. Open a new chrome tab and enter `chrome://extensions/` in your address bar.
+6. Enable "Developer mode."
+7. Click on `Load unpacked`.
+8. Select the `chrome-mv3-dev` folder from your project.
 
-## Making production build
-
-Run the following:
-
-```bash
-pnpm build
-# or
-npm run build
-```
-
-This should create a production bundle for your extension, ready to be zipped and published to the stores.
-
-## Submit to the webstores
-
-The easiest way to deploy your Plasmo extension is to use the built-in [bpp](https://bpp.browser.market) GitHub action. Prior to using this action however, make sure to build your extension and upload the first version to the store to establish the basic credentials. Then, simply follow [this setup instruction](https://docs.plasmo.com/framework/workflows/submit) and you should be on your way for automated submission!
+## Article
+For more details on how I built this browser extension using the Plasmo Framework and React, please check out this [blog post](https://veljkocerovic.com/blog/build-a-cross-browser-extension-with-plasmo-framework).
